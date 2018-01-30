@@ -1,5 +1,4 @@
-require "./lib/node"
-require "./lib/linked_list"
+
 
 
 # node = Node.new("Burke")
