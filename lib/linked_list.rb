@@ -9,18 +9,29 @@ class LinkedList
   end
 
   def append(surname)
-    @count += 1
-    @head = Node.new(surname)
-    # node.next_node = @head
-    # @head = node
-
+    if @head.nil?
+      @head = Node.new(surname)
+    else
+      list_end = find_list_end
+      list_end = Node.new(surname)
+    end
+    @count +=1
   end
-  #
-  # def count
-  #   @count
-  # end
+
+  def find_list_end(current_node = @head) #recursion
+    if current_node.next_node != nil
+      current_node = current_node.next_node
+      find_list_end(current_node)
+    else
+      return current_node.next_node
+    end
+  end
 
   def to_string
-     "The #{@head.surname} family"
+    if @count == 1
+      "The #{@head.surname} family"
+    else @count += 1
+      "The #{@node.surname} family, followed by the #{@next_node.next_node}"
+    end
   end
 end

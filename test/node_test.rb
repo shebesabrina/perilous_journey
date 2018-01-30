@@ -23,5 +23,4 @@ class NodeTest < Minitest::Test
     node = Node.new(nil)
     assert_nil  node.next_node
   end
-
 end
