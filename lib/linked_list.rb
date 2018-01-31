@@ -12,26 +12,33 @@ class LinkedList
     if @head.nil?
       @head = Node.new(surname)
     else
-      list_end = find_list_end
-      list_end = Node.new(surname)
+      current_node = @head
+      until current_node.next_node.nil?
+        current_node = current_node.next_node
+      end
+      current_node.next_node = Node.new(surname)
     end
-    @count +=1
   end
 
-  def find_list_end(current_node = @head) #recursion
-    if current_node.next_node != nil
+  def count
+    number_of_nodes = 0
+    current_node = @head
+    return 0 if @head.nil?
+    number_of_nodes += 1
+    until current_node.next_node.nil?
+      number_of_nodes += 1
       current_node = current_node.next_node
-      find_list_end(current_node)
-    else
-      return current_node.next_node
     end
+    number_of_nodes
   end
+
 
   def to_string
-    if @count == 1
+    if number_of_nodes == 1
       "The #{@head.surname} family"
-    else @count += 1
-      "The #{@node.surname} family, followed by the #{@next_node.next_node}"
+    else number_of_nodes > 1
+      "The #{@node.surname} family,
+      followed by the #{@next_node.next_node}"
     end
   end
 end

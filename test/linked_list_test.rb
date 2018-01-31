@@ -25,12 +25,13 @@ class LinkedListTest < Minitest::Test
   end
 
   def test_count
+
     list = LinkedList.new
 
     assert_equal 0, list.count
     list.append("West")
+    # require 'pry' ; binding.pry
     assert_equal 1, list.count
-
     list.append("Burke")
     assert_equal 2, list.count
 
@@ -41,7 +42,7 @@ class LinkedListTest < Minitest::Test
   end
 
   def test_it_can_print_a_string
-    skip
+    
     list = LinkedList.new
     list.append("West")
 
@@ -52,7 +53,7 @@ class LinkedListTest < Minitest::Test
     list = LinkedList.new
     list.append("Rhodes")
     list.append("Hardy")
-    assert_equal 2, list.count
+    # assert_equal 2, list.count
 
     assert_instance_of Node, list.head.next_node
     assert_equal "Hardy", list.head.next_node.surname
