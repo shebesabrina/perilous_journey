@@ -1,9 +1,9 @@
 require "./lib/node"
-# require 'pry'
+
 
 class LinkedList
-  attr_reader :head, :count
-
+  attr_reader :count
+  attr_accessor :head
   def initialize
     @head = nil
     @count = 0
@@ -35,7 +35,6 @@ class LinkedList
 
 
   def to_string
-    # binding.pry
     current_node = @head
     return @head if @head.nil?
     head_surname = "The #{@head.surname} family"
@@ -44,5 +43,25 @@ class LinkedList
     head_surname +=  ", followed by the #{current_node.surname} family"
     end
     head_surname
+  end
+
+  def prepend(surname)
+    if @head.nil?
+      @head = Node.new(surname)
+    else
+      new_node = Node.new(surname)
+      new_node.next_node = @head
+      @head = new_node
+    end
+
+    # def insert(count, surname)
+    #   if @head.nil?
+    #     find_node = Node.new(surname)
+    #   else
+    #     find_node = Node.new(number_of_nodes)
+    #     number_of_nodes.next_node = current_node
+    #     current_node.next_node = find_node
+    #   end
+    # end
   end
 end
