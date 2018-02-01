@@ -1,4 +1,5 @@
 require "./lib/node"
+# require 'pry'
 
 class LinkedList
   attr_reader :head, :count
@@ -34,11 +35,14 @@ class LinkedList
 
 
   def to_string
-    if number_of_nodes == 1
-      "The #{@head.surname} family"
-    else number_of_nodes > 1
-      "The #{@node.surname} family,
-      followed by the #{@next_node.next_node}"
+    # binding.pry
+    current_node = @head
+    return @head if @head.nil?
+    head_surname = "The #{@head.surname} family"
+    until current_node.next_node.nil?
+      current_node = current_node.next_node
+    head_surname +=  ", followed by the #{current_node.surname} family"
     end
+    head_surname
   end
 end
