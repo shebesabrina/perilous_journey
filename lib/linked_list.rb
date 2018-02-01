@@ -53,15 +53,16 @@ class LinkedList
       new_node.next_node = @head
       @head = new_node
     end
-
-    # def insert(count, surname)
-    #   if @head.nil?
-    #     find_node = Node.new(surname)
-    #   else
-    #     find_node = Node.new(number_of_nodes)
-    #     number_of_nodes.next_node = current_node
-    #     current_node.next_node = find_node
-    #   end
-    # end
+  end
+  
+  def insert(count, surname)
+    current_node = @head
+    count.times do
+      current_node = current_node.next_node
+    end
+    new_node = Node.new(current_node.surname)
+    new_node.next_node = current_node.next_node
+    current_node.surname =  surname
+    current_node.next_node = new_node
   end
 end

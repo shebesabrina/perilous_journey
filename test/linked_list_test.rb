@@ -61,7 +61,7 @@ class LinkedListTest < Minitest::Test
     assert_equal 2, list.count
 
     assert_instance_of Node, list.head.next_node
-    assert_equal "Hardy", 1, list.head.next_node.surname
+    assert_equal "Hardy", list.head.next_node.surname
   end
 
   def test_it_can_prepend_a_new_node
@@ -86,10 +86,10 @@ class LinkedListTest < Minitest::Test
     assert_equal "Rhodes", list.head.surname
     assert_equal "Hardy", list.head.next_node.surname
     # require 'pry' ; binding.pry
-    list.append(1,"Joe")
+    list.insert(1, "Joe")
     assert_equal "Rhodes", list.head.surname
     assert_equal "Joe", list.head.next_node.surname
-    assert_equal "Hardy", list.head.next_node.surname
+    assert_equal "Hardy", list.head.next_node.next_node.surname
 
   end
 end
